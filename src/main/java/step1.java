@@ -18,8 +18,8 @@ public class step1 {
 
         @Override
         public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-            Matcher m = Hebrew.matcher(value.toString());
-            if (m.matches()) {
+            Matcher matcher = Hebrew.matcher(value.toString());
+            if (matcher.matches()) {
                 String[] strings = value.toString().split("\t");
                 String[] words = strings[0].split(" ");
                 if (words.length > 2) {
@@ -34,28 +34,28 @@ public class step1 {
                     textSingle2.set(String.format("%s", w2));
                     Text textSingle3 = new Text();
                     textSingle3.set(String.format("%s", w3));
-                    Text textC0 = new Text();
+                    Text textTotal = new Text();
                     String all = "ALL";
-                    textC0.set(String.format("%s", all));
-                    Text textTuple1 = new Text();
-                    textTuple1.set(String.format("%s %s", w1, w2));
-                    Text textTuple2 = new Text();
-                    textTuple2.set(String.format("%s %s", w2, w3));
-                    Text textThree = new Text();
-                    textThree.set(String.format("%s %s %s", w1, w2, w3));
+                    textTotal.set(String.format("%s", all));
+                    Text textCouple1 = new Text();
+                    textCouple1.set(String.format("%s %s", w1, w2));
+                    Text textCouple2 = new Text();
+                    textCouple2.set(String.format("%s %s", w2, w3));
+                    Text textTriple = new Text();
+                    textTriple.set(String.format("%s %s %s", w1, w2, w3));
 
-                    Text textOc = new Text();
-                    textOc.set(String.format("%s %s %s %s", w1, w2, w3, occur));
-                    Text textOcThree = new Text();
-                    textOcThree.set(String.format("%s", occur));
+                    Text textOccur = new Text();
+                    textOccur.set(String.format("%s %s %s %s", w1, w2, w3, occur));
+                    Text textOccurThree = new Text();
+                    textOccurThree.set(String.format("%s", occur));
 
-                    context.write(textSingle1, textOc);
-                    context.write(textSingle2, textOc);
-                    context.write(textSingle3, textOc);
-                    context.write(textC0, textOc);
-                    context.write(textTuple1, textOc);
-                    context.write(textTuple2, textOc);
-                    context.write(textThree, textOcThree);
+                    context.write(textSingle1, textOccur);
+                    context.write(textSingle2, textOccur);
+                    context.write(textSingle3, textOccur);
+                    context.write(textTotal, textOccur);
+                    context.write(textCouple1, textOccur);
+                    context.write(textCouple2, textOccur);
+                    context.write(textTriple, textOccurThree);
 
                 }
             }

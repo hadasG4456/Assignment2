@@ -80,11 +80,13 @@ public class step2 {
             }
             if (logk2 && logk3) {
                 prob = (k3 * (N3 / C2)) + ((1 - k3) * k2 * (N2 / C1)) + ((1 - k3) * (1 - k2) * (N1 / C0));
-                Text Triple = new Text();
-                Triple.set(String.format("%s %s %s", w1, w2, w3));
-                Text val = new Text();
-                val.set(String.format("%s", prob));
-                context.write(Triple, val);
+                if (prob >= 0 && prob <= 1) {
+                    Text Triple = new Text();
+                    Triple.set(String.format("%s %s %s", w1, w2, w3));
+                    Text val = new Text();
+                    val.set(String.format("%s", prob));
+                    context.write(Triple, val);
+                }
             }
         }
     }

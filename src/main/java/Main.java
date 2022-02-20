@@ -48,7 +48,7 @@ public class Main {
                 .withJar("s3://assignment2dsp/DSP-2.jar")
                 .withMainClass("jobs")
                 .withArgs("s3n://datasets.elasticmapreduce/ngrams/books/20090715/heb-all/3gram/data"
-                        ,"s3n://assignment2dsp/output/");
+                        ,"s3n://assignment2dsp/outputAssignment2/");
 
         StepConfig stepConfig = new StepConfig()
                 .withHadoopJarStep(hadoopJarStepConfig)
