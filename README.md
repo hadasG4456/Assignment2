@@ -120,7 +120,9 @@ According to the data we keep for each triplet we take the information from the 
 * C1 - from the permutation where only w2 is in with its total number of appearance in the corpus.
 * C2 - from the permutation where only the couple (w1,w2) is in with its total number of appearance in the corpus.
 
-then , the key is the 3 words and the value is the probability
+then , the key is the 3 words and the value is the probability.
+
+** note that we have deleted the probabilities that where bigger than 1 or smaller than 0.
 
 ### Job3:
 
